@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoUrban Portfolio - Pitch Deck & Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0d1421;
+            --ocean-blue: #1e3a8a;
+            --sky-blue: #3b82f6;
+            --light-blue: #60a5fa;
+            --ice-blue: #93c5fd;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(ellipse at top, var(--ocean-blue) 0%, var(--deep-blue) 50%, #000 100%);
+            min-height: 100vh;
+            color: var(--white);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: wave 8s linear infinite;
+        }
+
+        .wave:nth-child(1) { animation-delay: 0s; }
+        .wave:nth-child(2) { animation-delay: 2s; }
+        .wave:nth-child(3) { animation-delay: 4s; }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideInDown 1.2s ease-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--ice-blue), var(--sky-blue), var(--ocean-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .section {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideInUp 1.2s ease-out;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .section:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--ice-blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 700px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            background: var(--white);
+            position: relative;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .pdf-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, var(--sky-blue), var(--ocean-blue));
+            color: var(--white);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .pdf-fallback h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .video-player {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            background: #000;
+        }
+
+        .video-player video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--ocean-blue));
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, var(--light-blue), var(--sky-blue));
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            }
+            to {
+                text-shadow: 0 0 50px rgba(59, 130, 246, 0.8), 0 0 70px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 30px;
+            }
+            
+            .pdf-viewer {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>TechnoUrban Portfolio</h1>
+            <p class="subtitle">Innovative Solutions for the Urban Future</p>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="section">
+                <h2>📊 Pitch Deck</h2>
+                <div class="pdf-viewer">
+                    <iframe src="Assets/Pitch.pdf" type="application/pdf">
+                        <div class="pdf-fallback">
+                            <h3>PDF Viewer</h3>
+                            <p>Your browser doesn't support embedded PDFs.</p>
+                            <button class="btn" onclick="window.open('Assets/Pitch.pdf', '_blank')" style="margin-top: 20px;">
+                                Open PDF
+                            </button>
+                        </div>
+                    </iframe>
+                </div>
+                <div class="controls">
+                    <button class="btn" onclick="window.open('Assets/Pitch.pdf', '_blank')">
+                        📄 Open in New Tab
+                    </button>
+                    <button class="btn" onclick="downloadPdf()">
+                        💾 Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎬 MVP Demo</h2>
+                <div class="video-player">
+                    <video controls preload="metadata" poster="">
+                        <source src="Assets/MVP.mov" type="video/quicktime">
+                        <source src="Assets/MVP.mov" type="video/mp4">
+                        <p>Your browser doesn't support HTML video. <a href="Assets/MVP.mov">Download the video</a> instead.</p>
+                    </video>
+                </div>
+                <div class="controls">
+                    <button class="btn" onclick="toggleFullscreen()">
+                        🔍 Fullscreen
+                    </button>
+                    <button class="btn" onclick="downloadVideo()">
+                        📥 Download Video
+                    </button>
+                    <button class="btn" onclick="togglePlayPause()">
+                        ⏯️ Play/Pause
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Video controls
+        function toggleFullscreen() {
+            const video = document.querySelector('video');
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
+            }
+        }
+
+        function downloadVideo() {
+            const link = document.createElement('a');
+            link.href = 'Assets/MVP.mov';
+            link.download = 'TechnoUrban_MVP_Demo.mov';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function togglePlayPause() {
+            const video = document.querySelector('video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function downloadPdf() {
+            const link = document.createElement('a');
+            link.href = 'Assets/Pitch.pdf';
+            link.download = 'TechnoUrban_Pitch_Deck.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Enhanced interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Add loading states
+            const video = document.querySelector('video');
+            const sections = document.querySelectorAll('.section');
+
+            // Video loading feedback
+            video.addEventListener('loadstart', function() {
+                console.log('Video loading started');
+            });
+
+            video.addEventListener('canplay', function() {
+                console.log('Video ready to play');
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === ' ' && e.target.tagName !== 'INPUT') {
+                    e.preventDefault();
+                    togglePlayPause();
+                }
+                if (e.key === 'f' || e.key === 'F') {
+                    toggleFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
