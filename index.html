@@ -310,18 +310,18 @@
             <div class="section">
                 <h2>📊 Pitch Deck</h2>
                 <div class="pdf-viewer">
-                    <iframe src="Assets/Pitch.pdf" type="application/pdf">
+                    <iframe src="Pitch.pdf" type="application/pdf">
                         <div class="pdf-fallback">
                             <h3>PDF Viewer</h3>
                             <p>Your browser doesn't support embedded PDFs.</p>
-                            <button class="btn" onclick="window.open('Assets/Pitch.pdf', '_blank')" style="margin-top: 20px;">
+                            <button class="btn" onclick="window.open('Pitch.pdf', '_blank')" style="margin-top: 20px;">
                                 Open PDF
                             </button>
                         </div>
                     </iframe>
                 </div>
                 <div class="controls">
-                    <button class="btn" onclick="window.open('Assets/Pitch.pdf', '_blank')">
+                    <button class="btn" onclick="window.open('Pitch.pdf', '_blank')">
                         📄 Open in New Tab
                     </button>
                     <button class="btn" onclick="downloadPdf()">
@@ -334,9 +334,9 @@
                 <h2>🎬 MVP Demo</h2>
                 <div class="video-player">
                     <video controls preload="metadata" poster="">
-                        <source src="Assets/MVP.mov" type="video/quicktime">
-                        <source src="Assets/MVP.mov" type="video/mp4">
-                        <p>Your browser doesn't support HTML video. <a href="Assets/MVP.mov">Download the video</a> instead.</p>
+                        <source src="MVP.mov" type="video/quicktime">
+                        <source src="MVP.mov" type="video/mp4">
+                        <p>Your browser doesn't support HTML video. <a href="MVP.mov">Download the video</a> instead.</p>
                     </video>
                 </div>
                 <div class="controls">
@@ -369,7 +369,7 @@
 
         function downloadVideo() {
             const link = document.createElement('a');
-            link.href = 'Assets/MVP.mov';
+            link.href = 'MVP.mov';
             link.download = 'TechnoUrban_MVP_Demo.mov';
             document.body.appendChild(link);
             link.click();
@@ -387,7 +387,7 @@
 
         function downloadPdf() {
             const link = document.createElement('a');
-            link.href = 'Assets/Pitch.pdf';
+            link.href = 'Pitch.pdf';
             link.download = 'TechnoUrban_Pitch_Deck.pdf';
             document.body.appendChild(link);
             link.click();
